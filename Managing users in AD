@@ -1,0 +1,26 @@
+Platform:TRYHACKME
+Date:14 JULY 2026
+Topic:MANAGING USERS IN AD
+
+## Learned
+- CREATING AND DELETING ORGANISATIONAL UNITS(OU'S) AND USERS.
+-TURNING OFF THE ACCIDENTAL DELETION FOR DELETION THAT IS ON BY DEFAULT NOT ALLOWING DELETION THROUGH THE PROPERTIES TAB IN THE OBJECT SECTION.
+-LEARNED ABOUT DELEGATION I.E SPECIAL FEATURE OF AD TO GIVE A SOME USERS SPECIAL CONTROLS TO DO SOMETHING WITHOUT REQUIRING CONFERMATION FROM THE ADMINISTRATOR OVER SOME OU'S.
+-COMMON USE CASE OF DELEGATION IS PROVIDING THE PASSWORD RESET CONTROLS OF OTHER LOW PRIVILAGE OU'S TO THE IT DEPARTMENT USERS .
+-using the powershell to change the password for other low privilage users since we do not generally have the privilage to open the files directly we just have the privilage to change the password.
+
+
+## Commands
+set new passworsd command- PS C:\Users\phillip> Set-ADAccountPassword sophie -Reset -NewPassword (Read-Host -AsSecureString -Prompt 'New Password') -Verbose
+
+New Password: *********
+
+VERBOSE: Performing the operation "Set-ADAccountPassword" on target "CN=Sophie,OU=Sales,OU=THM,DC=thm,DC=local".
+
+
+force password reset on next login- PS C:\Users\phillip> Set-ADUser -ChangePasswordAtLogon $true -Identity sophie -Verbose
+
+VERBOSE: Performing the operation "Set" on target "CN=Sophie,OU=Sales,OU=THM,DC=thm,DC=local".
+
+## Resources
+- https://tryhackme.com/room/winadbasics
